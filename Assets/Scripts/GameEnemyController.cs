@@ -36,7 +36,7 @@ public class GameEnemyController : MonoBehaviour
             int randomIndex = Random.Range(0, ListSpawWE.Count);
             SplinePath selectedSpline = ListSpawWE[randomIndex];
             // Spawnea el WeakEnemy en la posición inicial del SplinePath
-            GameObject newWE = Instantiate(WeakEnemy, selectedSpline.transform.position, Quaternion.identity);
+            GameObject newWE = Instantiate(WeakEnemy, new Vector2(0, -10), Quaternion.identity);
             newWE.GetComponent<Enemy>().SelectSpline(selectedSpline);
             yield return new WaitForSeconds(1f);
         }
@@ -44,13 +44,45 @@ public class GameEnemyController : MonoBehaviour
         yield return new WaitForSeconds(seg);
         StartCoroutine(SpawnWE(seg, amount));
     }
-    IEnumerator SpawnSE(float seg)
+    IEnumerator SpawnSE(float seg, int amount)
     {
+        if (ListSpawWE.Count == 0)
+        {
+            Debug.LogWarning("La lista de SplinePath para WeakEnemy está vacía.");
+        }
+        // Selecciona un SplinePath aleatorio de la lista
+        for (int i = 0; i < amount; i++)
+        {
+            int randomIndex = Random.Range(0, ListSpawSE.Count);
+            SplinePath selectedSpline = ListSpawSE[randomIndex];
+            // Spawnea el StrongEnemy en la posición inicial del SplinePath
+            GameObject newSE = Instantiate(StrongEnemy, new Vector2(0, -10), Quaternion.identity);
+            newSE.GetComponent<Enemy>().SelectSpline(selectedSpline);
+            yield return new WaitForSeconds(1f);
+        }
+
         yield return new WaitForSeconds(seg);
+        StartCoroutine(SpawnWE(seg, amount));
     }
-    IEnumerator SpawnBoss(float seg)
+    IEnumerator SpawnBoss(float seg, int amount)
     {
+        if (ListSpawWE.Count == 0)
+        {
+            Debug.LogWarning("La lista de SplinePath para WeakEnemy está vacía.");
+        }
+        // Selecciona un SplinePath aleatorio de la lista
+        for (int i = 0; i < amount; i++)
+        {
+            int randomIndex = Random.Range(0, ListSpawBoss.Count);
+            SplinePath selectedSpline = ListSpawBoss[randomIndex];
+            // Spawnea el Boss en la posición inicial del SplinePath
+            GameObject newBoss = Instantiate(Boss, new Vector2(0,-10), Quaternion.identity);
+            newBoss.GetComponent<Enemy>().SelectSpline(selectedSpline);
+            yield return new WaitForSeconds(1f);
+        }
+
         yield return new WaitForSeconds(seg);
+        StartCoroutine(SpawnWE(seg, amount));
     }
 
 

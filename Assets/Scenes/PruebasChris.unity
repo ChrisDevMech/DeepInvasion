@@ -202,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 182511476}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.7082415, y: 0.1341499, z: -10.003165}
+  m_LocalPosition: {x: 2.04, y: 0.1341499, z: -10.003165}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -704,9 +704,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmmoPlayerPrefab: {fileID: 490722620692817003, guid: a901af03147819647aab4dee6d3da14c, type: 3}
-  AmmoPlayerAmount: 10
-  AmmoEnemyPrefab: {fileID: 490722620692817003, guid: a901af03147819647aab4dee6d3da14c, type: 3}
-  AmmoEnemyAmount: 10
+  AmmoPlayerAmount: 40
+  AmmoEnemyPrefab: {fileID: 490722620692817003, guid: c16413111557a7e478ebc506c17740c1, type: 3}
+  AmmoEnemyAmount: 100
 --- !u!4 &1347740288
 Transform:
   m_ObjectHideFlags: 0
