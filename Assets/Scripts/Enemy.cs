@@ -61,6 +61,7 @@ public class Enemy : MonoBehaviour
 
         t += moveSpeed * Time.deltaTime / splinePath.GetLength();
     }
+
     void OnTriggerEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
@@ -72,6 +73,7 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
     void Despawn()
     {
         Destroy(gameObject);
@@ -104,5 +106,10 @@ public class Enemy : MonoBehaviour
         {
             Destroy(gameObject); // Destroy the enemy
         }
+    }
+
+    public void SelectSpline(SplinePath path)
+    {
+        splinePath = path;
     }
 }   

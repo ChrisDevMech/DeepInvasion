@@ -88,6 +88,7 @@ MonoBehaviour:
   fireRate: 1
   rotationOffset: -90
   health: 1
+  contactDamage: 1
 --- !u!212 &3285097803565927688
 SpriteRenderer:
   m_ObjectHideFlags: 0
