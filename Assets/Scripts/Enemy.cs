@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour {
 
     public void SetDestroyed() {
         //Sound Destroy
-        AudioManager.instance.PlaySFX("ShipDestroy");
+       // AudioManager.instance.PlaySFX("ShipDestroy");
         //Evento Effect Destroy
         if (onEnemyFXDestroy != null)
             onEnemyFXDestroy(transform.position);

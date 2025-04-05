@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour {
         rigidbody.velocity = transform.right * speed;
 
         //Sonido Disparo
-        AudioManager.instance.PlaySFX("BulletShoot");
+       // AudioManager.instance.PlaySFX("BulletShoot");
         //Evento Efecto Spawn
         if (onBulletFXSpawn != null)
             onBulletFXSpawn(transform.position);
@@ -69,7 +69,7 @@ public class Bullet : MonoBehaviour {
 
     public void SetDestroyedWithEffects() {
         //Sonido Destroy
-        AudioManager.instance.PlaySFX("BulletDestroy");
+      //  AudioManager.instance.PlaySFX("BulletDestroy");
         //Evento Efecto Destroy
         if (onBulletFXDestroy != null)   //Le sumo este valor para que el efecto toque con la pared
             onBulletFXDestroy(transform.position);

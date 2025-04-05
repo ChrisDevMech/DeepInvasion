@@ -46,7 +46,7 @@ public class Player : MonoBehaviour {
 
     public void SetDestroyed() {
         //Sound Destroy
-        AudioManager.instance.PlaySFX("ShipDestroy");
+      //  AudioManager.instance.PlaySFX("ShipDestroy");
         //Evento Effect Destroy
         if (onPlayerFXDestroy != null)
             onPlayerFXDestroy(transform.position);

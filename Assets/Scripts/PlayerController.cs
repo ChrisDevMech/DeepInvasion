@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour {
         if (onPlayerFire != null) {
             onPlayerFire();
         }
-        AudioManager.instance.PlaySFX("BulletShootEmpty");
+        // AudioManager.instance.PlaySFX("BulletShootEmpty");
     }
     public void OnPause() {
         // Evento Pausar
