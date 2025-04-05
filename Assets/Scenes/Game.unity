@@ -736,7 +736,7 @@ MonoBehaviour:
   AmmoPlayerPrefab: {fileID: 490722620692817003, guid: a901af03147819647aab4dee6d3da14c, type: 3}
   AmmoPlayerAmount: 1
   AmmoEnemyPrefab: {fileID: 490722620692817003, guid: a901af03147819647aab4dee6d3da14c, type: 3}
-  AmmoEnemyAmount: 1
+  AmmoEnemyAmount: 5
 --- !u!1 &1694332294
 GameObject:
   m_ObjectHideFlags: 0
@@ -832,7 +832,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: -5177388603050735206, guid: 8884154dfe85442a3a3578be807dbcdf, type: 3}
   m_Color: {r: 0.9811321, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -940,6 +940,7 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 48699259}
   projectileSpeed: 8
   fireRate: 1
+  autoShoot: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
