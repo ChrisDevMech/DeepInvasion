@@ -85,10 +85,11 @@ MonoBehaviour:
   projectilePrefab: {fileID: 490722620692817003, guid: c16413111557a7e478ebc506c17740c1, type: 3}
   projectileSpawnPoint: {fileID: 3853361205141267878}
   projectileSpeed: 8
-  fireRate: 1
+  fireRate: 0
   rotationOffset: -90
   health: 1
   contactDamage: 1
+  powerUpSpawner: {fileID: 0}
 --- !u!212 &3285097803565927688
 SpriteRenderer:
   m_ObjectHideFlags: 0

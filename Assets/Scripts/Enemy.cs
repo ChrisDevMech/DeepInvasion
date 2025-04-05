@@ -12,6 +12,8 @@ public class Enemy : MonoBehaviour
     public int health = 1;
     public int contactDamage = 1; // Damage dealt to player on contact
 
+    public PowerUpSpawner powerUpSpawner; // Assign the PowerUpSpawner in the Inspector
+
     private float t = 0f;
     private Transform player;
     private float nextFireTime;
@@ -23,6 +25,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogError("Player not found! Make sure the player has the 'Player' tag.");
         }
+        powerUpSpawner = GameObject.FindAnyObjectByType<PowerUpSpawner>();
     }
 
     void Update()
@@ -104,6 +107,10 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
+            if (powerUpSpawner != null)
+            {
+                powerUpSpawner.SpawnPowerUp(transform.position); // Spawn power-up
+            }
             Destroy(gameObject); // Destroy the enemy
         }
     }

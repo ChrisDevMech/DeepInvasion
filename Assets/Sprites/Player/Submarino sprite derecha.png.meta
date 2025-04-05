@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Submarino sprite derecha_0: -8115893319061777522
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
