@@ -9,6 +9,8 @@ public class Enemy : MonoBehaviour
     public float projectileSpeed = 8f;
     public float fireRate = 1f;
     public float rotationOffset = -90f; // Add this line
+    public int health = 1;
+    public int contactDamage = 1; // Damage dealt to player on contact
 
     private float t = 0f;
     private Transform player;
@@ -59,7 +61,17 @@ public class Enemy : MonoBehaviour
 
         t += moveSpeed * Time.deltaTime / splinePath.GetLength();
     }
-
+    void OnTriggerEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            if (player != null)
+            {
+                player.TakeDamage(contactDamage);
+            }
+        }
+    }
     void Despawn()
     {
         Destroy(gameObject);
@@ -82,6 +94,15 @@ public class Enemy : MonoBehaviour
             {
                 Debug.LogError("Projectile prefab does not have a Rigidbody2D!");
             }
+        }
+    }
+
+    public void TakeDamage(int damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            Destroy(gameObject); // Destroy the enemy
         }
     }
 }   

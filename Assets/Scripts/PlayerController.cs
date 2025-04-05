@@ -1,13 +1,17 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement; // Required for reloading the scene
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
     public float moveSpeed = 5f;
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 10f;
-    public int lives = 3; // Starting lives
+    public int lives = 3;
+    public bool isPoweredUp = false;
+    public float powerUpTimer = 0f;
+    public float powerUpDuration = 5f; // Duration of the power-up in seconds
 
     private Rigidbody2D rb;
 
@@ -61,8 +65,34 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // Call this function when the player takes damage
-    public void TakeDamage(int damageAmount = 1) // Optional damage amount
+    void Die()
+    {
+        Debug.Log("Player died!");
+        // Add death effects, animations, etc.
+        // Reload the current scene (or go to a game over screen)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload current scene
+    }
+
+    public void ActivatePowerUp()
+    {
+        isPoweredUp = true;
+        powerUpTimer = powerUpDuration;
+        StartCoroutine(PowerUpCountdown());
+    }
+
+    IEnumerator PowerUpCountdown()
+    {
+        while (powerUpTimer > 0)
+        {
+            yield return null;
+            powerUpTimer -= Time.deltaTime;
+        }
+
+        isPoweredUp = false;
+        powerUpTimer = 0;
+    }
+
+    public void TakeDamage(int damageAmount = 1)
     {
         lives -= damageAmount;
 
@@ -74,13 +104,5 @@ public class PlayerMovement : MonoBehaviour
         {
             Debug.Log("Player took damage. Lives remaining: " + lives);
         }
-    }
-
-    void Die()
-    {
-        Debug.Log("Player died!");
-        // Add death effects, animations, etc.
-        // Reload the current scene (or go to a game over screen)
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload current scene
     }
 }
