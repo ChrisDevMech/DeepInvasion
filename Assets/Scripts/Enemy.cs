@@ -8,12 +8,10 @@ public class Enemy : MonoBehaviour
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 8f;
     public float fireRate = 1f;
-    public bool autoShoot = true;
 
     private float t = 0f;
     private Transform player;
     private float nextFireTime;
-    private bool despawned = false;
 
     void Start()
     {
@@ -26,7 +24,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (splinePath == null || splinePath.pathTransforms.Length < 2 || despawned) return;
+        if (splinePath == null || splinePath.pathTransforms.Length < 2) return;
 
         if (t < 1f)
         {
@@ -37,7 +35,7 @@ public class Enemy : MonoBehaviour
             Despawn();
         }
 
-        if (autoShoot && Time.time >= nextFireTime)
+        if (Time.time >= nextFireTime)
         {
             Shoot();
             nextFireTime = Time.time + 1f / fireRate;
@@ -65,7 +63,6 @@ public class Enemy : MonoBehaviour
 
     void Despawn()
     {
-        despawned = true;
         Destroy(gameObject);
     }
 
