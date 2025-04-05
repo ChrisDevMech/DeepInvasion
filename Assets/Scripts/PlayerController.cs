@@ -1,98 +1,83 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement; // Required for reloading the scene
 
-//Player Input -> messages
-public class PlayerController : MonoBehaviour {
-    #region Controller Actions
-    //EVENTO (DELEGADO)   --> disparar
-    public delegate void PlayerFire();
-    public static event PlayerFire onPlayerFire;  //(EVENTO)
-    //EVENTO (DELEGADO)   --> Pausar
-    public delegate void Pause();
-    public static event Pause onPause;  //(EVENTO)
-
-    [Header("Movement")]
-    //[SerializeField] float speed;
-    [SerializeField] float rotationSpeed = 5f;
-    [SerializeField] float forceMagnitude = 300f;
-    [SerializeField] float accuracy = 10f;
+public class PlayerMovement : MonoBehaviour
+{
+    public float moveSpeed = 5f;
+    public GameObject projectilePrefab;
+    public Transform projectileSpawnPoint;
+    public float projectileSpeed = 10f;
+    public int lives = 3; // Starting lives
 
     private Rigidbody2D rb;
-    private float lastValidAngle = 0f; // Almacena la última rotación válida
 
-    private float horizontal;
-    private float vertical;
-    #endregion Controller Actions
-
-    void Start() {
+    void Start()
+    {
         rb = GetComponent<Rigidbody2D>();
-    }
-    private void Update() {
-        // Visualizar el rayo en la escena
-        Debug.DrawRay(transform.position, new Vector3(horizontal, vertical, 0) * 2f, Color.green);
-    }
-
-    #region Input Handler
-    public void OnMove(InputValue value) {
-        Debug.Log("Move");
-        Vector2 movement = value.Get<Vector2>();
-        horizontal = movement.x;
-        vertical = movement.y;
-        //Debug.Log($"Walk{movement}");
-    }
-    public void OnFire() {
-        Debug.Log("Fire");
-        // Evento Disparar
-        if (onPlayerFire != null) {
-            onPlayerFire();
+        if (rb == null)
+        {
+            Debug.LogError("Rigidbody2D component not found on the player!");
         }
-        // AudioManager.instance.PlaySFX("BulletShootEmpty");
+
+        if (projectileSpawnPoint == null)
+        {
+            Debug.LogError("Projectile Spawn Point not assigned!");
+        }
     }
-    public void OnPause() {
-        // Evento Pausar
-        if (onPause != null)
-            onPause();
-        //Debug.Log("Pause");
+
+    void Update()
+    {
+        // Movement
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized;
+        rb.linearVelocity = movement * moveSpeed;
+
+        // Shooting
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Shoot();
+        }
     }
-    #endregion
 
-    #region Controller Actions
-    private void FixedUpdate() {
-        // Movimiento
-        if (horizontal != 0 || vertical != 0) {
+    void Shoot()
+    {
+        if (projectilePrefab != null && projectileSpawnPoint != null)
+        {
+            GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+            Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
 
-            // Calcular ángulo de rotación
-            float targetAngle = Mathf.Atan2(vertical, horizontal) * Mathf.Rad2Deg;
-            // Ajustar el rango de ángulos a 0-360 grados
-            targetAngle = (targetAngle + 360) % 360;
-
-            // Rotar hacia el ángulo calculado con velocidad constante
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, Quaternion.Euler(0, 0, targetAngle), rotationSpeed * Time.fixedDeltaTime);
-
-            // Calcular la diferencia angular
-            float angleDifference = Mathf.Abs(transform.eulerAngles.z - targetAngle);
-            // Ajustar la diferencia angular al rango de 0-180 grados
-            angleDifference = Mathf.Min(angleDifference, 360 - angleDifference);
-
-            // Almacenar la �ltima rotación válida
-            lastValidAngle = transform.eulerAngles.z;
-
-            //Debug.Log("angleDifference: " + angleDifference);
-
-            // Aplicar fuerza si la diferencia angular es pequeña
-            if (angleDifference < accuracy) {
-                Vector2 forceDirection = new Vector2(horizontal, vertical).normalized;
-                rb.AddForce(forceDirection * forceMagnitude * Time.fixedDeltaTime);
+            if (projectileRb != null)
+            {
+                projectileRb.linearVelocity = Vector2.down * projectileSpeed;
             }
-        } else {
-            // Si no hay entrada del joystick, mantener la última rotación válida
-            transform.rotation = Quaternion.Euler(0, 0, lastValidAngle);
+            else
+            {
+                Debug.LogError("Projectile prefab does not have a Rigidbody2D!");
+            }
         }
     }
-    #endregion Controller Actions
+
+    // Call this function when the player takes damage
+    public void TakeDamage(int damageAmount = 1) // Optional damage amount
+    {
+        lives -= damageAmount;
+
+        if (lives <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            Debug.Log("Player took damage. Lives remaining: " + lives);
+        }
+    }
+
+    void Die()
+    {
+        Debug.Log("Player died!");
+        // Add death effects, animations, etc.
+        // Reload the current scene (or go to a game over screen)
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex); // Reload current scene
+    }
 }
