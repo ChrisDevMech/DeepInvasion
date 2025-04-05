@@ -8,8 +8,14 @@ public class SplinePath : MonoBehaviour
     {
         if (pathPoints == null || pathPoints.Length < 2) return Vector3.zero;
 
+        // Ensure t is within 0-1 range
+        t = Mathf.Clamp01(t);
+
         int segmentIndex = Mathf.FloorToInt(t * (pathPoints.Length - 1));
         t = t * (pathPoints.Length - 1) - segmentIndex;
+
+        // Ensure segmentIndex is within bounds
+        segmentIndex = Mathf.Clamp(segmentIndex, 0, pathPoints.Length - 2);
 
         Vector3 p0 = pathPoints[Mathf.Max(0, segmentIndex - 1)];
         Vector3 p1 = pathPoints[segmentIndex];
@@ -28,6 +34,7 @@ public class SplinePath : MonoBehaviour
 
         return 0.5f * (a + (b * t) + (c * t * t) + (d * t * t * t));
     }
+
 
     void OnDrawGizmos()
     {
