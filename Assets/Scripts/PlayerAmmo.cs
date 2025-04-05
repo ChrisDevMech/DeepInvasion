@@ -25,7 +25,7 @@ public class PlayerAmmo : MonoBehaviour
             {
                 enemy.TakeDamage(damage);
             }
-            Destroy(gameObject); // Destroy the bullet
+            this.gameObject.SetActive(false);
         }
     }
 }

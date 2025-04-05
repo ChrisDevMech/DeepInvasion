@@ -62,11 +62,11 @@ public class Enemy : MonoBehaviour
         t += moveSpeed * Time.deltaTime / splinePath.GetLength();
     }
 
-    void OnTriggerEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+            PlayerController player = other.gameObject.GetComponent<PlayerController>();
             if (player != null)
             {
                 player.TakeDamage(contactDamage);
