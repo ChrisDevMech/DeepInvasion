@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class Enemy : MonoBehaviour
+public class SplineFollower : MonoBehaviour
 {
     public SplinePath splinePath;
     public float moveSpeed = 3f;
@@ -9,13 +8,10 @@ public class Enemy : MonoBehaviour
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 8f;
     public float fireRate = 1f;
-    public bool autoShoot = true;
-    public int lives = 1; // Starting lives
 
     private float t = 0f;
     private Transform player;
     private float nextFireTime;
-    private bool despawned = false; // Flag to indicate if the enemy has despawned
 
     void Start()
     {
@@ -28,7 +24,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (splinePath == null || splinePath.pathPoints.Length < 2 || despawned) return;
+        if (splinePath == null || splinePath.pathPoints.Length < 2 ) return;
 
         if (t < 1f)
         {
@@ -39,7 +35,7 @@ public class Enemy : MonoBehaviour
             Despawn();
         }
 
-        if (autoShoot && Time.time >= nextFireTime)
+        if (Time.time >= nextFireTime)
         {
             Shoot();
             nextFireTime = Time.time + 1f / fireRate;
@@ -75,19 +71,6 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    // Call this function when the player takes damage
-    public void TakeDamage(int damageAmount = 1) // Optional damage amount
-    {
-        lives -= damageAmount;
-
-        if (lives <= 0)
-        {
-            Debug.Log("Enemy died!");
-            Despawn();
-        }
-        else
-        {
-            Debug.Log("Enemy took damage. Lives remaining: " + lives);
-        }
-    }
 }
+
+// Ensure your SplinePath.cs has the GetLength() function from the previous response.
