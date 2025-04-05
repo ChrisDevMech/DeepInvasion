@@ -73,12 +73,13 @@ public class Enemy : MonoBehaviour
     {
         if (projectilePrefab != null && projectileSpawnPoint != null)
         {
-            GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+            GameObject projectile = ObjectPoolControler.instance.GetPooledEnemy();
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
-
             if (projectileRb != null)
             {
+                projectile.transform.position = projectileSpawnPoint.position;
                 Vector2 direction = (player.position - projectileSpawnPoint.position).normalized;
+                projectile.SetActive(true);
                 projectileRb.linearVelocity = direction * projectileSpeed;
             }
             else
