@@ -16,4 +16,5 @@ public class AmmoScript : MonoBehaviour
         yield return new WaitForSeconds(seg);
         this.gameObject.SetActive(false);
     }
+    
 }
