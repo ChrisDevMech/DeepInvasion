@@ -26,7 +26,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (splinePath == null || splinePath.pathPoints.Length < 2 || despawned) return;
+        if (splinePath == null || splinePath.pathTransforms.Length < 2 || despawned) return;
 
         if (t < 1f)
         {
