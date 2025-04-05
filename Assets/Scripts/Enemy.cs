@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 8f;
     public float fireRate = 1f;
+    public float rotationOffset = -90f; // Add this line
 
     private float t = 0f;
     private Transform player;
@@ -47,15 +48,13 @@ public class Enemy : MonoBehaviour
         Vector3 currentPosition = splinePath.GetPoint(t);
         transform.position = currentPosition;
 
-        // Calculate the direction to the next point on the spline.
-        Vector3 nextPosition = splinePath.GetPoint(t + 0.01f); // Look slightly ahead
+        Vector3 nextPosition = splinePath.GetPoint(t + 0.01f);
         Vector3 direction = nextPosition - currentPosition;
 
         if (direction != Vector3.zero)
         {
-            // Calculate the rotation to look in the direction of movement.
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            transform.rotation = Quaternion.Euler(0, 0, angle);
+            transform.rotation = Quaternion.Euler(0, 0, angle + rotationOffset); // Add rotationOffset
         }
 
         t += moveSpeed * Time.deltaTime / splinePath.GetLength();
@@ -68,7 +67,7 @@ public class Enemy : MonoBehaviour
 
     void Shoot()
     {
-        if (projectilePrefab != null && projectileSpawnPoint != null)
+        if (projectilePrefab != null && projectileSpawnPoint != null && fireRate > 0)
         {
             GameObject projectile = ObjectPoolControler.instance.GetPooledEnemy();
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();

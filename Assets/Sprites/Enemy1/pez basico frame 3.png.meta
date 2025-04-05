@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      pez basico frame 3_0: -5733028765152720336
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
