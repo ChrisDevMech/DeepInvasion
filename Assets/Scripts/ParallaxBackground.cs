@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class ParallaxBackground : MonoBehaviour
@@ -24,4 +25,6 @@ public class ParallaxBackground : MonoBehaviour
         offset += parallaxSpeed * Time.deltaTime;
         backgroundRenderer.material.mainTextureOffset = new Vector2(0, offset);
     }
+
+    
 }
