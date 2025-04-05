@@ -21,7 +21,7 @@ public class Bullet : MonoBehaviour {
     private Bullet bullet;
 
     public void Start() {
-        rigidbody.velocity = transform.right * speed;
+        rigidbody.linearVelocity = transform.right * speed;
 
         //Sonido Disparo
        // AudioManager.instance.PlaySFX("BulletShoot");
