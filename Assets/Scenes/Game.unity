@@ -252,6 +252,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parallaxSpeed: -0.1
   backgroundRenderer: {fileID: 451519180}
+--- !u!1 &749241100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749241101}
+  m_Layer: 0
+  m_Name: Ruta (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &749241101
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749241100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.55, y: -0.29, z: -10.051176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &991467373
 GameObject:
   m_ObjectHideFlags: 0
@@ -424,6 +455,37 @@ MonoBehaviour:
   projectileSpawnPoint: {fileID: 1694332295}
   projectileSpeed: 10
   lives: 3
+--- !u!1 &1076342658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076342659}
+  m_Layer: 0
+  m_Name: Ruta
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1076342659
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076342658}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -6, y: 9.02, z: -10.051176}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1185788329
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,11 +515,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d7631677b9ad647bcf9c062c73b642, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pathPoints:
-  - {x: -18.7, y: -3.09, z: 0}
-  - {x: 0, y: -5.61, z: 3.94}
-  - {x: 5.86, y: 0, z: 0}
-  - {x: -6.71, y: 8.83, z: 0}
+  pathTransforms:
+  - {fileID: 1377286701}
+  - {fileID: 749241101}
+  - {fileID: 1076342659}
 --- !u!4 &1185788331
 Transform:
   m_ObjectHideFlags: 0
@@ -468,6 +529,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 2.5210567, y: 0.27562323, z: -0.002551244}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1377286700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1377286701}
+  m_Layer: 0
+  m_Name: Ruta (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1377286701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1377286700}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.3972445, y: -10.07, z: -10.051176}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -734,9 +826,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AmmoPlayerPrefab: {fileID: 490722620692817003, guid: a901af03147819647aab4dee6d3da14c, type: 3}
-  AmmoPlayerAmount: 1
+  AmmoPlayerAmount: 10
   AmmoEnemyPrefab: {fileID: 490722620692817003, guid: a901af03147819647aab4dee6d3da14c, type: 3}
-  AmmoEnemyAmount: 1
+  AmmoEnemyAmount: 10
 --- !u!1 &1694332294
 GameObject:
   m_ObjectHideFlags: 0
@@ -952,3 +1044,6 @@ SceneRoots:
   - {fileID: 451519181}
   - {fileID: 1594684760}
   - {fileID: 1185788331}
+  - {fileID: 1076342659}
+  - {fileID: 749241101}
+  - {fileID: 1377286701}

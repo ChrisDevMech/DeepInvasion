@@ -44,11 +44,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (projectilePrefab != null && projectileSpawnPoint != null)
         {
-            GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+            // GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, Quaternion.identity);
+            GameObject projectile = ObjectPoolControler.instance.GetPooledPlayer();
             Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
 
             if (projectileRb != null)
             {
+                projectile.transform.position = projectileSpawnPoint.position;               
+                projectile.SetActive(true);
                 projectileRb.linearVelocity = Vector2.down * projectileSpeed;
             }
             else
