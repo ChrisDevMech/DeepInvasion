@@ -80,26 +80,19 @@ public class PlayerController : MonoBehaviour
         {
             GameObject leftProjectile = ObjectPoolControler.instance.GetPooledPlayer();
             Rigidbody2D leftProjectileRb = leftProjectile.GetComponent<Rigidbody2D>();
-            Debug.Log(leftProjectile);
-            Debug.Log(leftProjectileRb);
+
+            leftProjectile.transform.position = rightCannonSpawnPoint.position;
+            leftProjectile.SetActive(true);
+            leftProjectileRb.linearVelocity = new Vector2(1, -1).normalized * projectileSpeed;
+
 
             GameObject rightProjectile = ObjectPoolControler.instance.GetPooledPlayer();
             Rigidbody2D rightProjectileRb = rightProjectile.GetComponent<Rigidbody2D>();
-            if (leftProjectileRb != null && rightProjectileRb != null)
-            {
-                Debug.Log("pew"); 
-                rightProjectile.transform.position = leftCannonSpawnPoint.position;
-                rightProjectile.SetActive(true);
-                rightProjectileRb.linearVelocity = new Vector2(-1, -1).normalized * projectileSpeed;
 
-                leftProjectile.transform.position = rightCannonSpawnPoint.position;
-                leftProjectile.SetActive(true);
-                leftProjectileRb.linearVelocity = new Vector2(1, -1).normalized * projectileSpeed;
-            }
-            else
-            {
-                Debug.LogError("Diagonal projectile prefabs do not have a Rigidbody2D!");
-            }
+            rightProjectile.transform.position = leftCannonSpawnPoint.position;
+            rightProjectile.SetActive(true);
+            rightProjectileRb.linearVelocity = new Vector2(-1, -1).normalized * projectileSpeed;
+
         }
     }
 
