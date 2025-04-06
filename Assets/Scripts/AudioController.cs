@@ -65,7 +65,6 @@ public class AudioController : MonoBehaviour
             sfxSource.clip = sfxClips[clipName];
             sfxSource.Play();
         }
-        else Debug.LogWarning("El AudioClip " + clipName + " no se encontró en el diccionario de sfxClips.");
     }
 
     // Método de la clase singleton para reproducir música de fondo
@@ -76,7 +75,6 @@ public class AudioController : MonoBehaviour
             musicSource.clip = musicClips[clipName];
             musicSource.Play();
         }
-        else Debug.LogWarning("El AudioClip " + clipName + " no se encontró en el diccionario de musicClips.");
     }
 
     // -----------------------------------------
