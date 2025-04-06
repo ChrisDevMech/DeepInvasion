@@ -27,6 +27,7 @@ public class GameEnemyController : MonoBehaviour
 
     IEnumerator SpawnWE(float seg, int amount)
     {
+        yield return new WaitForSeconds(1f);
         // Selecciona un SplinePath aleatorio de la lista
         for (int i = 0; i < amount; i++)
         {     
@@ -43,6 +44,7 @@ public class GameEnemyController : MonoBehaviour
     }
     IEnumerator SpawnSE(float seg, int amount)
     {
+        yield return new WaitForSeconds(1f);
         // Selecciona un SplinePath aleatorio de la lista
         for (int i = 0; i < amount; i++)
         {
@@ -59,6 +61,7 @@ public class GameEnemyController : MonoBehaviour
     }
     IEnumerator SpawnBoss(float seg, int amount)
     {
+        yield return new WaitForSeconds(1f);
         // Selecciona un SplinePath aleatorio de la lista
         for (int i = 0; i < amount; i++)
         {
