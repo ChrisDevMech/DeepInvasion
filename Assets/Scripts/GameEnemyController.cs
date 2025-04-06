@@ -13,11 +13,10 @@ public class GameEnemyController : MonoBehaviour
     // Generamos la lista de objetos
     [SerializeField] private List<SplinePath> ListSpawWE = new List<SplinePath>();
     [SerializeField] private List<SplinePath> ListSpawSE = new List<SplinePath>();
-    [SerializeField] private List<SplinePath> ListSpawBoss = new List<SplinePath>();
 
     //Variables para controlar cantidad y frecuencia
-    [SerializeField] int AmountWE, AmountSE, AmountBoss;
-    [SerializeField] float FrecuenceWE, FrecuenceSE, FrecuenceBoss;
+    [SerializeField] int AmountWE, AmountSE;
+    [SerializeField] float FrecuenceWE, FrecuenceSE;
 
     public void Start()
     {
@@ -63,15 +62,10 @@ public class GameEnemyController : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         // Selecciona un SplinePath aleatorio de la lista
-        for (int i = 0; i < amount; i++)
-        {
-            int randomIndex = Random.Range(0, ListSpawBoss.Count);
-            SplinePath selectedSpline = ListSpawBoss[randomIndex];
-            // Spawnea el Boss en la posición inicial del SplinePath
-            GameObject newBoss = Instantiate(Boss, new Vector2(0,-10), Quaternion.identity);
-            newBoss.GetComponent<Enemy>().SelectSpline(selectedSpline);
-            yield return new WaitForSeconds(1f);
-        }
+
+        // Spawnea el Boss en la posición inicial del SplinePath
+        GameObject newBoss = Instantiate(Boss, new Vector2(0,-10), Quaternion.identity);
+        yield return new WaitForSeconds(1f);
 
         yield return new WaitForSeconds(seg);
         StartCoroutine(SpawnWE(seg, amount));
