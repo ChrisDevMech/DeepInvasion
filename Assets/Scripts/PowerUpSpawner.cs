@@ -7,7 +7,7 @@ using UnityEngine;
 public class PowerUpSpawner : MonoBehaviour
 {
     public GameObject powerUpPrefab;
-    public float spawnChance = 0.2f; // 20% chance to spawn power-up
+    public float spawnChance = 0.1f; // 10% chance to spawn power-up
     public float spawnSpeed = 3f; // Speed at which the power-up moves upwards
 
     public void SpawnPowerUp(Vector3 spawnPosition)
