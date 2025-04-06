@@ -21,10 +21,6 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        if (player == null)
-        {
-            Debug.LogError("Player not found! Make sure the player has the 'Player' tag.");
-        }
         powerUpSpawner = GameObject.FindAnyObjectByType<PowerUpSpawner>();
     }
 
@@ -94,10 +90,6 @@ public class Enemy : MonoBehaviour
                 Vector2 direction = (player.position - projectileSpawnPoint.position).normalized;
                 projectile.SetActive(true);
                 projectileRb.linearVelocity = direction * projectileSpeed;
-            }
-            else
-            {
-                Debug.LogError("Projectile prefab does not have a Rigidbody2D!");
             }
         }
     }

@@ -26,10 +26,6 @@ public class GameEnemyController : MonoBehaviour
 
     IEnumerator SpawnWE(float seg, int amount)
     {
-        if (ListSpawWE.Count == 0)
-        {
-            Debug.LogWarning("La lista de SplinePath para WeakEnemy está vacía.");
-        }
         // Selecciona un SplinePath aleatorio de la lista
         for (int i = 0; i < amount; i++)
         {     
@@ -46,10 +42,6 @@ public class GameEnemyController : MonoBehaviour
     }
     IEnumerator SpawnSE(float seg, int amount)
     {
-        if (ListSpawWE.Count == 0)
-        {
-            Debug.LogWarning("La lista de SplinePath para WeakEnemy está vacía.");
-        }
         // Selecciona un SplinePath aleatorio de la lista
         for (int i = 0; i < amount; i++)
         {
@@ -66,10 +58,6 @@ public class GameEnemyController : MonoBehaviour
     }
     IEnumerator SpawnBoss(float seg, int amount)
     {
-        if (ListSpawWE.Count == 0)
-        {
-            Debug.LogWarning("La lista de SplinePath para WeakEnemy está vacía.");
-        }
         // Selecciona un SplinePath aleatorio de la lista
         for (int i = 0; i < amount; i++)
         {

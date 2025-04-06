@@ -13,10 +13,6 @@ public class ParallaxBackground : MonoBehaviour
         if (backgroundRenderer == null)
         {
             backgroundRenderer = GetComponent<Renderer>(); // Attempt to get the renderer if not assigned.
-            if (backgroundRenderer == null)
-            {
-                Debug.LogError("No renderer assigned for ParallaxBackground!");
-            }
         }
     }
 
