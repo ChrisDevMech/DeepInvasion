@@ -10,10 +10,13 @@ public class Boss : MonoBehaviour
     public float rotationOffset = -90f; // Add this line
     public int health = 1;
     public int contactDamage = 2; // Damage dealt to player on contact
+    public Transform hitpoint;
 
     private float t = 0f;
     private Transform player;
     private float nextFireTime;
+    public GameObject deathParticlePrefab;
+    public GameObject hitParticlePrefab;
 
     void Start()
     {
@@ -68,13 +71,14 @@ public class Boss : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        Debug.Log("oof");
+        Instantiate(hitParticlePrefab, hitpoint.position, Quaternion.identity);
         health -= damage;
         if (health <= 0)
         {
-            Debug.Log("ded");
             AudioController.instance.PlaySFX("DieEnemy");
+            Instantiate(deathParticlePrefab, hitpoint.position, Quaternion.identity);
             Destroy(gameObject); // Destroy the enemy
+
         }
     }
 
