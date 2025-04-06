@@ -4,7 +4,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed = 10f;
+    public float precisionSpeed = 5f;
     public GameObject projectilePrefab;
     public Transform projectileSpawnPoint;
     public float projectileSpeed = 10f;
@@ -21,10 +22,12 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    private float initialspeed;
     
 
     void Start()
     {
+        initialspeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // Initialize SpriteRenderer
         if (defaultSprite != null)
@@ -68,9 +71,16 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            moveSpeed = precisionSpeed;
+        }
+        else
+        {
+            moveSpeed = initialspeed;
+        }
     }
-
-    void Shoot()
+        void Shoot()
     {
         if (projectilePrefab != null && projectileSpawnPoint != null)
         {
@@ -80,6 +90,7 @@ public class PlayerController : MonoBehaviour
             if (projectileRb != null)
             {
                 projectile.transform.position = projectileSpawnPoint.position;
+                projectile.transform.rotation = projectileSpawnPoint.rotation;
                 projectile.SetActive(true);
                 AudioController.instance.PlaySFX("ShootPlayer");
                 projectileRb.linearVelocity = Vector2.down * projectileSpeed;
@@ -99,7 +110,11 @@ public class PlayerController : MonoBehaviour
             GameObject leftProjectile = ObjectPoolControler.instance.GetPooledPlayer();
             Rigidbody2D leftProjectileRb = leftProjectile.GetComponent<Rigidbody2D>();
 
+
+           
             leftProjectile.transform.position = rightCannonSpawnPoint.position;
+            leftProjectile.transform.rotation = projectileSpawnPoint.rotation;
+            leftProjectile.transform.rotation = Quaternion.Euler(0, 0, 45f); // Rotate 45 degrees
             leftProjectile.SetActive(true);
             leftProjectileRb.linearVelocity = new Vector2(1, -1).normalized * projectileSpeed;
 
@@ -107,7 +122,10 @@ public class PlayerController : MonoBehaviour
             GameObject rightProjectile = ObjectPoolControler.instance.GetPooledPlayer();
             Rigidbody2D rightProjectileRb = rightProjectile.GetComponent<Rigidbody2D>();
 
+            
             rightProjectile.transform.position = leftCannonSpawnPoint.position;
+            rightProjectile.transform.rotation = projectileSpawnPoint.rotation;
+            rightProjectile.transform.rotation = Quaternion.Euler(0, 0, -45f); // Rotate -45 degrees
             rightProjectile.SetActive(true);
             rightProjectileRb.linearVelocity = new Vector2(-1, -1).normalized * projectileSpeed;
 

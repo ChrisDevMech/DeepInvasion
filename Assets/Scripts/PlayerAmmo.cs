@@ -15,6 +15,8 @@ public class PlayerAmmo : MonoBehaviour
     {
         yield return new WaitForSeconds(seg);
         this.gameObject.SetActive(false);
+        
+
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -26,6 +28,7 @@ public class PlayerAmmo : MonoBehaviour
                 enemy.TakeDamage(damage);
             }
             this.gameObject.SetActive(false);
+            
         }
     }
 }

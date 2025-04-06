@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 1472757107030333488}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.6, z: 0}
+  m_LocalPosition: {x: 0, y: -1.39, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -89,11 +89,11 @@ MonoBehaviour:
   isPoweredUp: 0
   powerUpTimer: 0
   powerUpDuration: 12
-  leftSprite: {fileID: 0}
-  rightSprite: {fileID: 0}
-  defaultSprite: {fileID: 0}
-  leftCannonSpawnPoint: {fileID: 8690156271038778198}
-  rightCannonSpawnPoint: {fileID: 6687707148283600387}
+  leftSprite: {fileID: -330329795443090695, guid: f66f8db824a9a3042bda0d592771de88, type: 3}
+  rightSprite: {fileID: -8115893319061777522, guid: 22438d5151a758242932eba657d8a11e, type: 3}
+  defaultSprite: {fileID: -9140256808698944454, guid: 8fe1d1f5035bfe5488dbd529e69f7da8, type: 3}
+  leftCannonSpawnPoint: {fileID: 6687707148283600387}
+  rightCannonSpawnPoint: {fileID: 8690156271038778198}
 --- !u!212 &8715088532777564795
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -138,8 +138,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 0.015300989, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: -9140256808698944454, guid: 8fe1d1f5035bfe5488dbd529e69f7da8, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -211,7 +211,7 @@ CapsuleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 1.42, y: 2}
   m_Direction: 0
 --- !u!1 &6520378495233363229
 GameObject:
@@ -223,7 +223,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6687707148283600387}
   m_Layer: 0
-  m_Name: Cannon (R)
+  m_Name: Cannon (L)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,7 +238,7 @@ Transform:
   m_GameObject: {fileID: 6520378495233363229}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1, y: -1.6, z: 0}
+  m_LocalPosition: {x: -0.65, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -254,7 +254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8690156271038778198}
   m_Layer: 0
-  m_Name: Cannon (L)
+  m_Name: Cannon (R)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -269,7 +269,7 @@ Transform:
   m_GameObject: {fileID: 7428278361537077961}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: -1.6, z: 0}
+  m_LocalPosition: {x: 0.65, y: -1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
