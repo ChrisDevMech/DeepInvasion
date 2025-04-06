@@ -81,7 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5101b81ede32df049960470912314ed0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 10
+  precisionSpeed: 5
   projectilePrefab: {fileID: 490722620692817003, guid: a901af03147819647aab4dee6d3da14c, type: 3}
   projectileSpawnPoint: {fileID: 1161441980050560738}
   projectileSpeed: 10
