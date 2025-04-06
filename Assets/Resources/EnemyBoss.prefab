@@ -100,6 +100,7 @@ Transform:
   - {fileID: 8479070686599413137}
   - {fileID: 8687210748205270355}
   - {fileID: 4067918133844917821}
+  - {fileID: 2931167751494551114}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &967110270506216258
@@ -124,8 +125,11 @@ MonoBehaviour:
   projectileSpeed: 4
   fireRate: 0.2
   rotationOffset: -90
-  health: 1
+  health: 5
   contactDamage: 2
+  hitpoint: {fileID: 2931167751494551114}
+  deathParticlePrefab: {fileID: 5832980986353676282, guid: c35f9108ccc82a749a2fe58754c4509f, type: 3}
+  hitParticlePrefab: {fileID: 5832980986353676282, guid: c35f9108ccc82a749a2fe58754c4509f, type: 3}
 --- !u!212 &1448563163613907679
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -267,6 +271,37 @@ CapsuleCollider2D:
   m_Offset: {x: 0.029320002, y: 0.7916517}
   m_Size: {x: 6.696218, y: 16.856611}
   m_Direction: 0
+--- !u!1 &4314462476324781334
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2931167751494551114}
+  m_Layer: 0
+  m_Name: Hitpoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2931167751494551114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4314462476324781334}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.31, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4484749194507591542}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5739504374213647646
 GameObject:
   m_ObjectHideFlags: 0

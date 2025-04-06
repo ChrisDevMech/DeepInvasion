@@ -98,12 +98,13 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
+        Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
         health -= damage;
         if (health <= 0)
         {
              powerUpSpawner.SpawnPowerUp(transform.position); // Spawn power-up
             AudioController.instance.PlaySFX("DieEnemy");
-            Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
+            Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
             Destroy(gameObject); // Destroy the enemy
 
         }
