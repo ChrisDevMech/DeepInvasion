@@ -12,27 +12,23 @@ public class PlayerController : MonoBehaviour
     public bool isPoweredUp = false;
     public float powerUpTimer = 0f;
     public float powerUpDuration = 10f;
+    [SerializeField] Sprite leftSprite;
+    [SerializeField] Sprite rightSprite;
+    [SerializeField] Sprite defaultSprite;
 
     public Transform leftCannonSpawnPoint; // Assign in Inspector
     public Transform rightCannonSpawnPoint; // Assign in Inspector
 
     private Rigidbody2D rb;
+    private SpriteRenderer spriteRenderer;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        if (rb == null)
+        spriteRenderer = GetComponent<SpriteRenderer>(); // Initialize SpriteRenderer
+        if (defaultSprite != null)
         {
-            Debug.LogError("Rigidbody2D component not found on the player!");
-        }
-
-        if (projectileSpawnPoint == null)
-        {
-            Debug.LogError("Projectile Spawn Point not assigned!");
-        }
-        if (leftCannonSpawnPoint == null || rightCannonSpawnPoint == null)
-        {
-            Debug.LogError("Cannon Spawn Points not assigned!");
+            spriteRenderer.sprite = defaultSprite;
         }
     }
 
@@ -42,6 +38,30 @@ public class PlayerController : MonoBehaviour
         float verticalInput = Input.GetAxisRaw("Vertical");
         Vector2 movement = new Vector2(horizontalInput, verticalInput).normalized;
         rb.linearVelocity = movement * moveSpeed;
+
+        // Change sprite based on horizontal movement
+        if (horizontalInput > 0)
+        {
+            if (rightSprite != null)
+            {
+                spriteRenderer.sprite = rightSprite;
+            }
+        }
+        else if (horizontalInput < 0)
+        {
+            if (leftSprite != null)
+            {
+                spriteRenderer.sprite = leftSprite;
+            }
+        }
+        else
+        {
+            if (defaultSprite != null)
+            {
+                spriteRenderer.sprite = defaultSprite;
+            }
+        }
+
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
