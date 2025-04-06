@@ -87,9 +87,8 @@ MonoBehaviour:
   projectileSpeed: 8
   fireRate: 0
   rotationOffset: -90
-  health: 4
+  health: 2
   contactDamage: 1
-  powerUpSpawner: {fileID: 0}
   deathParticlePrefab: {fileID: 5832980986353676282, guid: cea35b502c2bee44bb612a9124f6ff7c, type: 3}
   hitParticlePrefab: {fileID: 5832980986353676282, guid: c35f9108ccc82a749a2fe58754c4509f, type: 3}
 --- !u!212 &3285097803565927688

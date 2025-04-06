@@ -14,6 +14,7 @@ public class Boss : MonoBehaviour
 
     private float t = 0f;
     private Transform player;
+    private GameManager gameManager;
     private float nextFireTime;
     public GameObject deathParticlePrefab;
     public GameObject hitParticlePrefab;
@@ -21,6 +22,7 @@ public class Boss : MonoBehaviour
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player")?.transform;
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
     }
 
     void Update()
@@ -78,6 +80,7 @@ public class Boss : MonoBehaviour
             AudioController.instance.PlaySFX("DieEnemy");
             Instantiate(deathParticlePrefab, hitpoint.position, Quaternion.identity);
             Destroy(gameObject); // Destroy the enemy
+            gameManager.Win();
 
         }
     }

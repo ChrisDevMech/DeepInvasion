@@ -87,10 +87,10 @@ MonoBehaviour:
   projectilePrefab: {fileID: 490722620692817003, guid: a901af03147819647aab4dee6d3da14c, type: 3}
   projectileSpawnPoint: {fileID: 1161441980050560738}
   projectileSpeed: 10
-  lives: 3
+  lives: 10
   isPoweredUp: 0
   powerUpTimer: 0
-  powerUpDuration: 12
+  powerUpDuration: 3
   leftSprite: {fileID: -330329795443090695, guid: f66f8db824a9a3042bda0d592771de88, type: 3}
   rightSprite: {fileID: -8115893319061777522, guid: 22438d5151a758242932eba657d8a11e, type: 3}
   defaultSprite: {fileID: -9140256808698944454, guid: 8fe1d1f5035bfe5488dbd529e69f7da8, type: 3}
@@ -210,7 +210,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0

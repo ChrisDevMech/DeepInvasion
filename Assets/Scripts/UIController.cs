@@ -36,7 +36,7 @@ public class UIController : MonoBehaviour
 
     void UpdateLivesUI()
     {
-        livesText.text = "Lives: " + player.lives;
+        livesText.text = "Vidas: " + player.lives;
     }
 
     void UpdatePowerUpTimerUI()

@@ -125,7 +125,7 @@ MonoBehaviour:
   projectileSpeed: 4
   fireRate: 0.2
   rotationOffset: -90
-  health: 5
+  health: 60
   contactDamage: 2
   hitpoint: {fileID: 2931167751494551114}
   deathParticlePrefab: {fileID: 5832980986353676282, guid: cea35b502c2bee44bb612a9124f6ff7c, type: 3}

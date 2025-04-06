@@ -2,16 +2,23 @@ using System.Collections;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject fondo;
     [SerializeField] GameObject Boss;
+    [SerializeField] GameObject panel;
+    [SerializeField] GameObject winPanel;
+    [SerializeField] GameObject losePanel;
     private float offset = 0f;
+
 
     public void Start()
     {
-        StartCoroutine(AnimationBackground());
+        panel.SetActive(true);
+        Time.timeScale = 0f;
+        
     }
 
     IEnumerator AnimationBackground()
@@ -34,7 +41,7 @@ public class GameManager : MonoBehaviour
         Vector2 startPosition = new Vector2(0, -20);
         Vector2 targetPosition = new Vector2(0, -10);
         GameObject bossInstance = Instantiate(Boss, startPosition, Quaternion.identity);
-
+        AudioController.instance.PlayMusic("BossTheme");
         float startTime = Time.time;
         float journeyLength = Vector2.Distance(startPosition, targetPosition);
 
@@ -48,4 +55,28 @@ public class GameManager : MonoBehaviour
         yield return null;
     }
 
+    public void ResumeGame()
+    {
+        Time.timeScale = 1.0f;
+        panel.SetActive(false);
+        StartCoroutine(AnimationBackground());
+    }
+
+    public void Restart()
+    {
+        AudioController.instance.PlayMusic("MainTheme");  
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void Lose()
+    {
+        losePanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
+
+    public void Win()
+    {
+        winPanel.SetActive(true);
+        Time.timeScale = 0f;
+    }
 }

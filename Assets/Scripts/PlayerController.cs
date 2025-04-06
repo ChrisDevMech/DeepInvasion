@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
     public Transform leftCannonSpawnPoint; // Assign in Inspector
     public Transform rightCannonSpawnPoint; // Assign in Inspector
 
+    private GameManager gameManager;
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     private float initialspeed;
@@ -30,6 +31,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
         initialspeed = moveSpeed;
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>(); // Initialize SpriteRenderer
@@ -135,12 +137,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Die()
-    {
-        AudioController.instance.PlaySFX("PlayerDead");
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
-
     public void ActivatePowerUp()
     {
         isPoweredUp = true;
@@ -162,13 +158,18 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damageAmount = 1)
     {
+        
         AudioController.instance.PlaySFX("PlayerDead");
         lives -= damageAmount;
         Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
         if (lives <= 0)
         {
+            AudioController.instance.PlaySFX("PlayerDead");
             Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
-            Die();
+            gameManager.Lose();
+           this.gameObject.SetActive(false);
+
+
         }
     }
 }

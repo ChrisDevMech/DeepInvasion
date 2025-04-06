@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour
     public int health = 1;
     public int contactDamage = 1; // Damage dealt to player on contact
 
-    public PowerUpSpawner powerUpSpawner; // Assign the PowerUpSpawner in the Inspector
+    private PowerUpSpawner powerUpSpawner; // Assign the PowerUpSpawner in the Inspector
     public GameObject deathParticlePrefab;
     public GameObject hitParticlePrefab;
 

@@ -2,7 +2,6 @@ using UnityEngine;
 using UnityEngine.UI; // Required for UI elements
 using System.Collections; // Required for Coroutines
 
-using UnityEngine;
 
 public class PowerUpSpawner : MonoBehaviour
 {

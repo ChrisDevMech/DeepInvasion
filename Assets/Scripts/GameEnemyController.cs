@@ -8,7 +8,6 @@ public class GameEnemyController : MonoBehaviour
     // Prefabs de los enemigos del nivel
     [SerializeField] GameObject WeakEnemy;
     [SerializeField] GameObject StrongEnemy;
-    [SerializeField] GameObject Boss;
 
     // Generamos la lista de objetos
     [SerializeField] private List<SplinePath> ListSpawWE = new List<SplinePath>();
@@ -56,20 +55,7 @@ public class GameEnemyController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(seg);
-        StartCoroutine(SpawnWE(seg, amount));
+        StartCoroutine(SpawnSE(seg, amount));
     }
-    IEnumerator SpawnBoss(float seg, int amount)
-    {
-        yield return new WaitForSeconds(1f);
-        // Selecciona un SplinePath aleatorio de la lista
-
-        // Spawnea el Boss en la posición inicial del SplinePath
-        GameObject newBoss = Instantiate(Boss, new Vector2(0,-10), Quaternion.identity);
-        yield return new WaitForSeconds(1f);
-
-        yield return new WaitForSeconds(seg);
-        StartCoroutine(SpawnWE(seg, amount));
-    }
-
 
 }
