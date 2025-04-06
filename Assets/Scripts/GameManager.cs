@@ -1,4 +1,5 @@
 using System.Collections;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -22,14 +23,28 @@ public class GameManager : MonoBehaviour
         {
             offset += -0.01f * Time.deltaTime;
             fondo.GetComponent<SpriteRenderer>().material.mainTextureOffset = new Vector2(0, offset);
-            StartCoroutine(BossAppear());
             yield return null;
         }
+        StartCoroutine(BossAppear());
+        yield return null;
     }
 
     IEnumerator BossAppear()
     {
-        Instantiate(Boss);
+        Vector2 startPosition = new Vector2(0, -20);
+        Vector2 targetPosition = new Vector2(0, -10);
+        GameObject bossInstance = Instantiate(Boss, startPosition, Quaternion.identity);
+
+        float startTime = Time.time;
+        float journeyLength = Vector2.Distance(startPosition, targetPosition);
+
+        while (bossInstance.transform.position.y != targetPosition.y)
+        {
+            float distanceCovered = (Time.time - startTime) * 5f;
+            float fractionOfJourney = distanceCovered / journeyLength;
+            bossInstance.transform.position = Vector2.Lerp(startPosition, targetPosition, fractionOfJourney);
+            yield return null;
+        }
         yield return null;
     }
 

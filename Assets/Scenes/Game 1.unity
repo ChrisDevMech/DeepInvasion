@@ -463,63 +463,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &361636876
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 4219130350672443829, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_Name
-      value: EnemyBoss
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -12.28
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4484749194507591542, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
 --- !u!1 &795584369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,6 +1128,8 @@ MonoBehaviour:
   AmmoPlayerAmount: 100
   AmmoEnemyPrefab: {fileID: 490722620692817003, guid: c16413111557a7e478ebc506c17740c1, type: 3}
   AmmoEnemyAmount: 10
+  AmmoBossPrefab: {fileID: 0}
+  AmmoBossAmount: 0
 --- !u!1 &1597789271
 GameObject:
   m_ObjectHideFlags: 0
@@ -1630,7 +1575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fondo: {fileID: 1144138422}
-  Boss: {fileID: 0}
+  Boss: {fileID: 4219130350672443829, guid: a126535802b1f634dbae682fe471d6e7, type: 3}
 --- !u!4 &2058272514
 Transform:
   m_ObjectHideFlags: 0
@@ -1855,4 +1800,3 @@ SceneRoots:
   - {fileID: 1597789275}
   - {fileID: 1989783472}
   - {fileID: 2058272514}
-  - {fileID: 361636876}
