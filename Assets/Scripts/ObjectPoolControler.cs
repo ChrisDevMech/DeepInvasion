@@ -92,7 +92,7 @@ public class ObjectPoolControler : MonoBehaviour
         return null; // Si todos los objetos están ocupados devolvemos nulo
     }
 
-    public GameObject GetBossEnemy()
+    public GameObject GetBossPool()
     {
         // Recorremos el pool
         for (int i = 0; i < PoolBoss.Count; i++)

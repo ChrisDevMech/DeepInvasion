@@ -54,7 +54,7 @@ public class Boss : MonoBehaviour
             {
                 if (spawnPoint != null)
                 {
-                    GameObject projectile = ObjectPoolControler.instance.GetPooledEnemy();
+                    GameObject projectile = ObjectPoolControler.instance.GetBossPool();
                     Rigidbody2D projectileRb = projectile.GetComponent<Rigidbody2D>();
 
                     if (projectileRb != null)
