@@ -93,6 +93,8 @@ MonoBehaviour:
   leftSprite: {fileID: -330329795443090695, guid: f66f8db824a9a3042bda0d592771de88, type: 3}
   rightSprite: {fileID: -8115893319061777522, guid: 22438d5151a758242932eba657d8a11e, type: 3}
   defaultSprite: {fileID: -9140256808698944454, guid: 8fe1d1f5035bfe5488dbd529e69f7da8, type: 3}
+  deathParticlePrefab: {fileID: 5832980986353676282, guid: 16486dddd0e424d419d43796cfe279f6, type: 3}
+  hitParticlePrefab: {fileID: 5832980986353676282, guid: 16486dddd0e424d419d43796cfe279f6, type: 3}
   leftCannonSpawnPoint: {fileID: 6687707148283600387}
   rightCannonSpawnPoint: {fileID: 8690156271038778198}
 --- !u!212 &8715088532777564795

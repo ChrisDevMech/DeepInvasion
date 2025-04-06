@@ -17,6 +17,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Sprite rightSprite;
     [SerializeField] Sprite defaultSprite;
 
+    public GameObject deathParticlePrefab;
+    public GameObject hitParticlePrefab;
+
     public Transform leftCannonSpawnPoint; // Assign in Inspector
     public Transform rightCannonSpawnPoint; // Assign in Inspector
 
@@ -161,9 +164,10 @@ public class PlayerController : MonoBehaviour
     {
         AudioController.instance.PlaySFX("PlayerDead");
         lives -= damageAmount;
-
+        Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
         if (lives <= 0)
         {
+            Instantiate(deathParticlePrefab, transform.position, Quaternion.identity);
             Die();
         }
     }

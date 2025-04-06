@@ -30,5 +30,16 @@ public class PlayerAmmo : MonoBehaviour
             this.gameObject.SetActive(false);
             
         }
+
+        else if (other.CompareTag("Boss"))
+        {
+            Boss enemy = other.GetComponent<Boss>();
+            if (enemy != null)
+            {
+                enemy.TakeDamage(damage);
+            }
+            this.gameObject.SetActive(false);
+
+        }
     }
 }

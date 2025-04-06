@@ -13,6 +13,8 @@ public class Enemy : MonoBehaviour
     public int contactDamage = 1; // Damage dealt to player on contact
 
     public PowerUpSpawner powerUpSpawner; // Assign the PowerUpSpawner in the Inspector
+    public GameObject deathParticlePrefab;
+    public GameObject hitParticlePrefab;
 
     private float t = 0f;
     private Transform player;
@@ -99,12 +101,11 @@ public class Enemy : MonoBehaviour
         health -= damage;
         if (health <= 0)
         {
-            if (powerUpSpawner != null)
-            {
-                powerUpSpawner.SpawnPowerUp(transform.position); // Spawn power-up
-            }
+             powerUpSpawner.SpawnPowerUp(transform.position); // Spawn power-up
             AudioController.instance.PlaySFX("DieEnemy");
+            Instantiate(hitParticlePrefab, transform.position, Quaternion.identity);
             Destroy(gameObject); // Destroy the enemy
+
         }
     }
 
