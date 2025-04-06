@@ -89,6 +89,9 @@ MonoBehaviour:
   isPoweredUp: 0
   powerUpTimer: 0
   powerUpDuration: 12
+  leftSprite: {fileID: 0}
+  rightSprite: {fileID: 0}
+  defaultSprite: {fileID: 0}
   leftCannonSpawnPoint: {fileID: 8690156271038778198}
   rightCannonSpawnPoint: {fileID: 6687707148283600387}
 --- !u!212 &8715088532777564795
@@ -114,7 +117,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 90644f1be59562b4d8a460035b8d9286, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
