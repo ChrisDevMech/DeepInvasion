@@ -74,7 +74,7 @@ public class Enemy : MonoBehaviour
     }
 
     void Despawn()
-    {
+    {      
         Destroy(gameObject);
     }
 
@@ -103,6 +103,7 @@ public class Enemy : MonoBehaviour
             {
                 powerUpSpawner.SpawnPowerUp(transform.position); // Spawn power-up
             }
+            AudioController.instance.PlaySFX("DieEnemy");
             Destroy(gameObject); // Destroy the enemy
         }
     }

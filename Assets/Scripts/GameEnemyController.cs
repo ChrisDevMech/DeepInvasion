@@ -22,6 +22,7 @@ public class GameEnemyController : MonoBehaviour
     public void Start()
     {
         StartCoroutine(SpawnWE(FrecuenceWE,AmountWE));
+        StartCoroutine(SpawnSE(FrecuenceSE,AmountSE));
     }
 
     IEnumerator SpawnWE(float seg, int amount)

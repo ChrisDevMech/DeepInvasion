@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "Tibur\xF3n duende sprite 2_0": -6512215280232155978
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

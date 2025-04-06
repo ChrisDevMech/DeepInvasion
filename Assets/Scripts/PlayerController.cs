@@ -21,6 +21,7 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
+    
 
     void Start()
     {
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
             {
                 projectile.transform.position = projectileSpawnPoint.position;
                 projectile.SetActive(true);
+                AudioController.instance.PlaySFX("ShootPlayer");
                 projectileRb.linearVelocity = Vector2.down * projectileSpeed;
 
                 if (isPoweredUp)
@@ -114,6 +116,7 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
+        AudioController.instance.PlaySFX("PlayerDead");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -138,6 +141,7 @@ public class PlayerController : MonoBehaviour
 
     public void TakeDamage(int damageAmount = 1)
     {
+        AudioController.instance.PlaySFX("PlayerDead");
         lives -= damageAmount;
 
         if (lives <= 0)
