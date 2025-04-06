@@ -87,10 +87,6 @@ public class PlayerController : MonoBehaviour
                     ShootDiagonalCannons();
                 }
             }
-            else
-            {
-                Debug.LogError("Projectile prefab does not have a Rigidbody2D!");
-            }
         }
     }
 
@@ -118,7 +114,6 @@ public class PlayerController : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Player died!");
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
@@ -148,10 +143,6 @@ public class PlayerController : MonoBehaviour
         if (lives <= 0)
         {
             Die();
-        }
-        else
-        {
-            Debug.Log("Player took damage. Lives remaining: " + lives);
         }
     }
 }
