@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject fondo;
+    [SerializeField] GameObject Boss;
     private float offset = 0f;
 
     public void Start()
@@ -21,8 +22,15 @@ public class GameManager : MonoBehaviour
         {
             offset += -0.01f * Time.deltaTime;
             fondo.GetComponent<SpriteRenderer>().material.mainTextureOffset = new Vector2(0, offset);
+            StartCoroutine(BossAppear());
             yield return null;
         }
+    }
+
+    IEnumerator BossAppear()
+    {
+        Instantiate(Boss);
+        yield return null;
     }
 
 }
