@@ -17,6 +17,12 @@ public class ObjectPoolControler : MonoBehaviour
     [SerializeField] GameObject AmmoEnemyPrefab;
     [SerializeField] int AmmoEnemyAmount; // Cantidad a generar
 
+    // Generamos la lista de objetos
+    private List<GameObject> PoolBoss = new List<GameObject>();
+    // Objeto que guardaremos en el pool
+    [SerializeField] GameObject AmmoBossPrefab;
+    [SerializeField] int AmmoBossAmount; // Cantidad a generar
+
 
     // Para convertirlo en Singleton
     void Awake()
@@ -43,6 +49,13 @@ public class ObjectPoolControler : MonoBehaviour
             GameObject obj = Instantiate(AmmoEnemyPrefab); // Instanciamos el objeto
             obj.SetActive(false); // Lo desactivamos
             PoolEnemy.Add(obj); // Añadimos el objeto a la lista
+        }
+
+        for (int i = 0; i < AmmoBossAmount; i++)
+        {
+            GameObject obj = Instantiate(AmmoBossPrefab); // Instanciamos el objeto
+            obj.SetActive(false); // Lo desactivamos
+            PoolBoss.Add(obj); // Añadimos el objeto a la lista
         }
     }
 
@@ -79,6 +92,20 @@ public class ObjectPoolControler : MonoBehaviour
         return null; // Si todos los objetos están ocupados devolvemos nulo
     }
 
+    public GameObject GetBossEnemy()
+    {
+        // Recorremos el pool
+        for (int i = 0; i < PoolBoss.Count; i++)
+        {
+            // Si el objeto no está activo en la jerarquía quiere decir
+            // que está disponible para su uso
+            if (!PoolBoss[i].activeInHierarchy)
+            {
+                return PoolBoss[i]; // Devolvemos el objeto disponible
+            }
+        }
+        return null; // Si todos los objetos están ocupados devolvemos nulo
+    }
 
 
 }
